@@ -1,5 +1,5 @@
 /*** 
- * Provides Hello World twice to test output for C++
+ * Produces Hello World twice to test output for C++
  ***/
 
  #include <iostream>
