@@ -3,7 +3,7 @@
 Lab1 Output + CLI Output Images
 
 Output
-<img src="C:\Users\dimli\Downloads\CPP\Object-Oriented-Programming-C-Plus-Plus\Lab1\img\ProgramOutput.png"width=800>
+<img src="C:\Users\dimli\Downloads\CPP\Object-Oriented-Programming-C-Plus-Plus\Lab1\img\ProgramOutput.png" width=800>
 
 CLI Lines
 
