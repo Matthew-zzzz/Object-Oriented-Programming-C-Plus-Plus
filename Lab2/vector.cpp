@@ -23,6 +23,9 @@ using namespace std;
   int main() {
     // create a constant integer called SIZE that is of value 5
 
+    // create a vector of integers called vec that can hold up to 5 elements
+
+
     //use a for loop to populate vec with the values 100 to 104
 
     printf("Before Increment--------------------\n");
@@ -46,4 +49,3 @@ using namespace std;
 
     return 0;
   }
-  
