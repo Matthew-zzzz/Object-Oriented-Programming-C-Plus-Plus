@@ -34,6 +34,7 @@ for (size_t i=0; i < v.size(); i++)
 
    for(int i=0; i < SIZE; i++)//use a for loop to populate vec with the values 100 to 104
 {
+ 
    vec.push_back(i+100);
 }
 
