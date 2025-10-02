@@ -19,7 +19,7 @@ int main()
 p1.setHitsTaken(3);
 p2.setHitsTaken(1);
 
-cout << "\nP2 hits taken ";
+
 // PRINT out the hits_taken
 cout << p1.getName() << " hits taken " << p1.getHitsTaken() << "\n";
 
@@ -31,9 +31,9 @@ cout << "0 is dead, 1 is alive\n";
 cout << "Is " << p1.getName() << " alive? ";
 if (p1.isAlive() ==0)
 {
-     cout << " no\n "; }
+     cout << " no\n"; }
 else {
- cout << " yes\n ";
+ cout << " yes\n";
 }
 
 
