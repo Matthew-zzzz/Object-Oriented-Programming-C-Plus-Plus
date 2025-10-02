@@ -1,13 +1,14 @@
 #include <iostream>
 #include <string>
-#include "Rpg.h"
+#include "RPG.h"
 
-RPG::RPG()
+RPG::RPG(){
 name = "NPC";
 hits_taken =0;
 luck = 0.1;
 exp = 50.0;
 level = 1;
+}
 
 //overloaded constructor
 RPG::RPG(string name, int hits_taken, float luck, float exp, int level)
@@ -20,7 +21,7 @@ RPG::RPG(string name, int hits_taken, float luck, float exp, int level)
 }
 
 //accessors
-string RPG::getname() const {
+string RPG::getName() const {
     return name;
 }
 int RPG::getHitsTaken() const {
@@ -40,6 +41,6 @@ int RPG::getLevel() const {
 void RPG::setHitsTaken(int new_hits) {
     hits_taken = new_hits;
 }
-bool RPG()::isAlive() const{
-    return hits taken < MAX_HITS_TAKEN;
+bool RPG::isAlive() const{
+    return hits_taken < MAX_HITS_TAKEN;
 }
