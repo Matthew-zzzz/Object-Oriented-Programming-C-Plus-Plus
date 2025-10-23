@@ -21,6 +21,7 @@ p2.setHitsTaken(1);
 
 
 // PRINT out the hits_taken
+cout << "\n";
 cout << p1.getName() << " hits taken " << p1.getHitsTaken() << "\n";
 
 cout << p2.getName() << " hits taken " << p2.getHitsTaken() << "\n";
