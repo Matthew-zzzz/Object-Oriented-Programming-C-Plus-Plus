@@ -57,8 +57,12 @@ Game::Game()
    */
    void Game::endRound(RPG *winner, RPG *loser, int loserIndex)
 {
-
+    winner->setHitsTaken(0);
+    live_players.erase(loserIndex);
+    winner->updateExpLevel();
+    cout << winner->getName() << " won against " << loser->getName() <<".\n";
 }
+
 /**
  * @brief calls selectPlayer() twice to get 2 players at random. If the players
  * are redundent, make a recursive call to battleRound() and return
@@ -66,18 +70,51 @@ Game::Game()
  * Call endRound() to highlight who won and update stats
  * 
  */
- void Game::battleROund()
+ void Game::battleRound()
  {
     // Call selectPlayer twice and assign values to playerIndex1 and playerIndex2
+    int playerIndex1 = selectPlayer();
+    int playerIndex2 = selectPlayer();
 
     // if playerIndex1 and playerIndex2 are the same, call battleRound() again and
     // return within the if-statement
+    if (playerIndex1 == playerIndex2){
+        return battleRound();
+    }
 
     // Creates two RPG + called player1 and player2 using players(playerIndex...)
-
+    RPG *player1 = player[playerIndex1];
+    RPG *player2 = player[playerIndex2];
+    cout << "Player 1:" << player1->getName();
+    cout << "\t vs \tPlayer 2: " <<player2->getName();
+    
     // Outside of the while loop, ID which player is alive
+    while (player1->isAlive && player2->isAlive)
+    {
+        player1->attack(player2);
+        if (player2->isAlive() = true)
+        {
+            player2->attack(player1);
+            return cout << player2->getName() << "attacks " << player1->getName();
+        }
+        else
+        {
+         return cout << player1->getName() <<" is dead ";   
+        }
+        if (player1->isAlive = false)
+        return cout << player1->getName() << "is dead ";
+    }
+
+
     // and call endRound with for the correct respective players.
 
+    if (player1->isAlive())
+     {   endRound(player1, player2, playerIndex2)
+     }
+        else
+        {
+            endRound(player2,player1,playerIndex1);
+        }
  }
  
  /**
@@ -86,12 +123,30 @@ Game::Game()
   * 
   */
   void Game::gameLoop()
+{
+    while (live_playeres.size() > 1){
+        battleRound();
+    }
+    cout << "\n Game is Over\n"
+    printFinalResults();
+}
+
+
+
   /**
    * @brief calls printStats on all players
    * 
    */
 
    void Game::printFinalResults()
+    {
+    cout << "\n Results\n";
+    for (auto player : players) {
+        player->printStats();
+    }
+}
+
+
    /**
     * @brief destroys the Game:: game object
     * 
@@ -99,4 +154,9 @@ Game::Game()
 
     Game::~Game()
     {
+        for (auto player : players){
+            delete player;
+        }
+        players.clear();
+        live_players.clear();
     }
