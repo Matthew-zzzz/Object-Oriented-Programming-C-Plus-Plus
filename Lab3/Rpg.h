@@ -24,9 +24,13 @@ class RPG {
     float getLuck() const;
     float getExp() const;
     int getLevel() const;
-
-
-
+// add. mutators
+    void setName(string name);
+    void updateExpLevel();
+    void attack(RPG* opponent);
+    void printStats();
+    ~RPG();
+    
    private:
     string name;
     int hits_taken;

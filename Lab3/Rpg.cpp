@@ -44,3 +44,81 @@ void RPG::setHitsTaken(int new_hits) {
 bool RPG::isAlive() const{
     return hits_taken < MAX_HITS_TAKEN;
 }
+/**
+ * @brief updates name
+ * 
+ */
+
+void RPG::setName(string name)
+{
+    this->name = name;
+}
+
+/**
+ * @brief increate RPG experience by 50
+ *      After updating, if RPG's exp is >= 100.0, Increate
+ *      RPG's level by 1, reset exp to 0 and increate luck
+ *       by 0.1 
+ */
+void RPG:: updateExpLevel(){
+    exp= exp+50.0;
+    if (exp>=100.0){
+        level=level+1;
+        exp = 0;
+        luck=luck+0.1;
+    }
+}
+
+/**
+ * @brief Hits or misses opponent at random. Luck is a form of defense.
+ * The higher the opponent's luck, more likely attack will miss.
+ * If the attack is a hit, opponent's hits taken should increment by 1.
+ * Add last couple of lines to complete
+ * 
+ */
+ void RPG::attack(RPG *opponent){
+
+    random_device rd;
+    mt19937 gen(rd()); //seed with random
+    uniform_real_distribution<double> dis(0.0, 1.0);
+
+    float random_num = dis(gen);
+
+
+    //Create a bool called hit
+    // hit is true if random_name = HIT_FACTOR *opponent's luck
+    bool hit = (random_num = HIT_FACTOR * opponent->luck);  
+    if (hit) 
+    {
+     cout << " attacks " << opponent->name << ".\n";
+     opponent->hits_taken = hit_taken+1;
+     updateExpLevel();
+    }
+    else 
+    {
+        cout << name << " whiffs their attack against " << opponent->name << ".\n";
+    }
+ }
+
+/**
+ * @brief prints in the foamat:
+* " Name:_NPC_X Hits_Taken: X   Luck:0.X000     Exp: X0.000     Level: X        Status: Alive or dead." 
+ */
+ void RPG:printStats() {
+    cout << "Name: " << name << "\tHits_Taken: " << hits_taken << "\tLuck " << luck;
+    cout << "\t Exp: " << exp << "\t Level: " << level <<"\t Status ";
+    cout << " Status ";
+    if (isAlive){
+        cout << "\tAlive "; }
+    else{
+        "\tDead";
+        }
+ }
+ /**
+  * @brief Destroy the RPG::RPG object
+  * Already completed
+  * 
+  */
+RPG::~RPG()
+{
+}
