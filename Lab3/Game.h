@@ -1,8 +1,12 @@
 #include <iostream>
 using namespace std;
+#include "RPG.h"
 
 #ifndef GAME_H
 #define GAME_H
+#include <set>
+#include <vector>
+
 
 class Game {
 

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "RPG.h"
+#include <random>
 
 RPG::RPG(){
 name = "NPC";
@@ -90,8 +91,8 @@ void RPG:: updateExpLevel(){
     bool hit = (random_num = HIT_FACTOR * opponent->luck);  
     if (hit) 
     {
-     cout << " attacks " << opponent->name << ".\n";
-     opponent->hits_taken = hit_taken+1;
+     //cout << " attacks " << opponent->name << ".\n";
+     opponent->hits_taken = hits_taken+1;
      updateExpLevel();
     }
     else 
@@ -104,14 +105,15 @@ void RPG:: updateExpLevel(){
  * @brief prints in the foamat:
 * " Name:_NPC_X Hits_Taken: X   Luck:0.X000     Exp: X0.000     Level: X        Status: Alive or dead." 
  */
- void RPG:printStats() {
-    cout << "Name: " << name << "\tHits_Taken: " << hits_taken << "\tLuck " << luck;
-    cout << "\t Exp: " << exp << "\t Level: " << level <<"\t Status ";
+ void RPG::printStats() {
+    cout << "\nName: " << name << "\tHits_Taken: " << hits_taken << "\tLuck " << luck;
+    cout << "\t Exp: " << exp << "\t Level: " << level;
     cout << " Status ";
-    if (isAlive){
+    if (isAlive()){
         cout << "\tAlive "; }
-    else{
-        "\tDead";
+    else
+    {
+        cout << "\tDead ";
         }
  }
  /**

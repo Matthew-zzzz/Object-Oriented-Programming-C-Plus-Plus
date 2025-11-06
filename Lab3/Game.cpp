@@ -1,4 +1,7 @@
 #include "Game.h"
+#include "RPG.h"
+#include <random>
+using namespace std;
 
 Game::Game()
 {
@@ -18,9 +21,11 @@ Game::Game()
         //rename players
         string new_name = "NPC_"+to_string(i);
         players[i]->setName(new_name);
-        live_players.insert[i];
+        live_players.insert(i);
     }
- }
+   // cout << " Generated " << live_players.size() << " players\n"; 
+ 
+}
 
  /**
   * @brief Randomly selects a player (via index) from set
@@ -34,7 +39,7 @@ Game::Game()
     uniform_int_distribution<> dist(0, live_players.size() -1);
   
     //pick random index
-    int randomIndex - dist(gen);
+    int randomIndex = dist(gen);
 
     // Advance iterator to that index
     set<int>:: iterator it = live_players.begin();
@@ -60,7 +65,7 @@ Game::Game()
     winner->setHitsTaken(0);
     live_players.erase(loserIndex);
     winner->updateExpLevel();
-    cout << winner->getName() << " won against " << loser->getName() <<".\n";
+    cout << winner->getName() << " won against " << loser->getName() <<".\n\n";
 }
 
 /**
@@ -79,37 +84,36 @@ Game::Game()
     // if playerIndex1 and playerIndex2 are the same, call battleRound() again and
     // return within the if-statement
     if (playerIndex1 == playerIndex2){
-        return battleRound();
+        battleRound();
+        return;
     }
 
     // Creates two RPG + called player1 and player2 using players(playerIndex...)
-    RPG *player1 = player[playerIndex1];
-    RPG *player2 = player[playerIndex2];
+    RPG *player1 = players[playerIndex1];
+    RPG *player2 = players[playerIndex2];
     cout << "Player 1:" << player1->getName();
-    cout << "\t vs \tPlayer 2: " <<player2->getName();
+    cout << "\t vs \tPlayer 2: " <<player2->getName() << "\n";
+    
     
     // Outside of the while loop, ID which player is alive
-    while (player1->isAlive && player2->isAlive)
+    while (player1->isAlive() && player2->isAlive())
     {
         player1->attack(player2);
-        if (player2->isAlive() = true)
+        if (player2->isAlive())
         {
+           
             player2->attack(player1);
-            return cout << player2->getName() << "attacks " << player1->getName();
+           
+            
         }
-        else
-        {
-         return cout << player1->getName() <<" is dead ";   
-        }
-        if (player1->isAlive = false)
-        return cout << player1->getName() << "is dead ";
+       
     }
 
 
     // and call endRound with for the correct respective players.
 
     if (player1->isAlive())
-     {   endRound(player1, player2, playerIndex2)
+     {   endRound(player1, player2, playerIndex2);
      }
         else
         {
@@ -124,10 +128,10 @@ Game::Game()
   */
   void Game::gameLoop()
 {
-    while (live_playeres.size() > 1){
+    while (live_players.size() > 1){
         battleRound();
     }
-    cout << "\n Game is Over\n"
+    cout << "\n Game is Over\n";
     printFinalResults();
 }
 
@@ -141,7 +145,7 @@ Game::Game()
    void Game::printFinalResults()
     {
     cout << "\n Results\n";
-    for (auto player : players) {
+    for (auto* player: players) {
         player->printStats();
     }
 }
