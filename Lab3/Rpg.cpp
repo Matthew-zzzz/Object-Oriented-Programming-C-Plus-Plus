@@ -6,7 +6,7 @@
 RPG::RPG(){
 name = "NPC";
 hits_taken =0;
-luck = 0.1;
+luck = 0.2;
 exp = 50.0;
 level = 1;
 }
@@ -88,7 +88,7 @@ void RPG:: updateExpLevel(){
 
     //Create a bool called hit
     // hit is true if random_name = HIT_FACTOR *opponent's luck
-    bool hit = (random_num = HIT_FACTOR * opponent->luck);  
+    bool hit = (random_num > HIT_FACTOR * opponent->luck);  
     if (hit) 
     {
      //cout << " attacks " << opponent->name << ".\n";
