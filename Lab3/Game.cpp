@@ -145,7 +145,7 @@ Game::Game()
    void Game::printFinalResults()
     {
     cout << "\n Results\n";
-    for (auto* player: players) {
+    for (RPG* player: players) {
         player->printStats();
     }
 }
