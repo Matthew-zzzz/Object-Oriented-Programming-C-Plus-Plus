@@ -132,7 +132,7 @@ Game::Game()
         battleRound();
     }
     cout << "\n Game is Over\n";
-    printFinalResults();
+    
 }
 
 

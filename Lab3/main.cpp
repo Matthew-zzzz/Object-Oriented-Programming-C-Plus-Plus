@@ -18,7 +18,7 @@ int main()
     game.gameLoop();
 
     // Call printFinalResults()
-    
+    game.printFinalResults();
 
     return 0;
 }
